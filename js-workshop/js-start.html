@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color:#efefef;
+        }
+        label, input, output, #knowledge, legend, select, textarea, #message{
+            margin: 0.5em;
+            padding: 0.2em;
+            font-size: 1em;
+            border-radius: 5px;
+        }
+        output {
+            border: 1px solid black;
+        }
+        label.range {
+            display: inline-block;
+            width: 5em;
+            text-align: right;
+        }
+        fieldset {
+            margin-top: 2em;
+        }
+        legend {
+            background-color: #000;
+            color: #ffffff;
+        }
+        input[type=submit] {
+            background-color: #00bb00;
+        }
+        textarea {
+            background-color: #fafafa;
+            /* resize: none; */
+        }
+        #charsLeft {
+            color: #ababab;
+            font-size: 0.8em;
+            border: none;
+        }
+        #message {
+            border: none;
+        }
+        #age {
+            background-color:#efefef;
+        }
+        #icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 25%;
+            opacity: 70%;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+        }
+        #circle-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        opacity: 70%;
+        box-sizing: border-box; /* you may understand why I declared this property if you remove it and hover the icon*/
+        }
+
+        #icon:hover, #circle-icon:hover {
+        border: 2px solid black;
+        }
+        .fa {
+            padding: 20px;
+            font-size: 30px;
+            width: 30px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 20%;
+            margin: 2px 1px;
+        }
+       
+        .button { 
+            background-color: lightblue;
+            
+        }
+        nav {
+  height: 80px;
+  background-color: #222;
+  border-bottom: 1px solid #555
+}
+.list-item {
+  float: right;
+  margin-right: 25px;
+  margin-top: 10px;
+  list-style-type: none;
+}
+.list-item li {
+  float: left;
+  padding: 10px 10px;
+  font-size: 18px;
+  border-radius: 2px;
+  transition: all .7s ease-in-out;
+}
+
+.list-item li a {
+  color: #EEE;
+}
+.list-item li:hover {
+  background-color: brown;
+}
+#container {
+  width: 500px;
+  height: 500px;
+  position: relative;
+  background: azure;
+}
+#animate {
+  width: 225px;
+  height: 225px;
+  position: absolute;
+  background-image:url("data:image/png;base64,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");
+}
+    </style>
+</head>
+<body>
+    <h1>IEEE Student Branch NTUA</h1>
+    <nav>
+        <div class="logo">
+         
+        </div>
+        <div class="icon">
+          <span class="toggle">☰</span>
+        </div>
+        <ul class="list-item">
+          <li><a href="#">Computer Society</a></li>
+          <li><a href="#">Robotics and Automation Society</a></li>
+          <li><a href="#">Engineering in Medicine and Biology</a></li>
+          <li><a href="#">Power and Energy Society</a></li>
+          <li><a href="#">Communication Society</a></li>
+        </ul>
+      </nav>
+<h1>About</h1>
+<p>IEEE Student Branch in NTUA is a union of undergraduate and postgraduate students. Its purpose is to contribute 
+    to the expansion of knowledge related with the field of Electrical and Computer engineering and to the development 
+    of technical skills. Taking part in various and interesting projects,students acquire useful and pioneering
+    knowledge , obtain experience and  develop their creativity.</p>
+
+<h1>Events</h1>
+<div>
+<p>Workshop for training students about IEEE Extreme competition.
+</p>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<!-- <img src="IEEE_Extreme_training.jpg"> -->
+<br>    
+<button class="button" onclick="like()" type="button">
+    Likes  
+   <i class="fas fa-thumbs-up"></i>
+   <span id="likeCounter">0</span> 
+</button>
+</div>
+
+
+<h1> Complete the form to be assigned a Task </h1>
+<h3> Developer and friend of IEEE </h3>
+<!-- contact section -->
+<div id="contact-info">
+    <p> You can contact us about your questions...  &emsp; 
+        <a href = "mailto:ieee.ntua.sb@gmail.com"> <img src="https://thumbs.dreamstime.com/b/email-blue-circle-icon-open-envelope-pictogram-mail-symbol-email-messaging-email-marketing-campaign-website-design-178224635.jpg" id="circle-icon"></img> </a> 
+      &emsp; <a href="https://www.facebook.com/IeeeNtuaSB/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Facebook_icon_2013.svg/2048px-Facebook_icon_2013.svg.png" id="icon"></img> </a> 
+     &emsp; <a href="https://www.instagram.com/ieee_ntua_sb/">  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png" id="icon"></img> </a> 
+     &emsp; </p>
+       </div>
+<form id="myForm" method="get" onsubmit="return(validate());">
+    <output id="message"></output>
+    <!-- Personal info -->
+    <fieldset> 
+        <legend>Personal info</legend>
+        <label for="name">*First Name: </label>
+        <input id="name" type="text" autofocus size="30" 
+        name="name" placeholder="e.g. Christopher"><br>
+        <label for="surname">*Last Name: </label>
+        <input id="surname" type="text" name="surname" 
+        placeholder="e.g. Vardakis" size="30"><br>
+        <label for="email">*Email: </label>
+        <input id="email" type="email" name="email" required><br>
+        <input type="radio" id="junior" value="junior" name="devType" >
+        <label for="junior">Junior Developer  </label>
+        <input type="radio" id="senior" value="senior" name="devType">
+        <label for="senior">Senior Developer </label><br>
+        
+    </fieldset>
+
+    <!-- Available Tasks -->
+    <fieldset>
+        <legend>Available Tasks</legend>
+        <label for="date">*Estimated deadline:</label>
+        <input type="date" id="date" name="date"><br>
+        <label for="tasks">*Tasks:</label>
+        <input list="tasks" name="task" required>
+        <datalist id="tasks">
+        <select name="task" id="task">
+            <!-- here will be positioned options that are made by JavaScript -->
+        </select>
+        </datalist>
+    </fieldset>
+
+    <!-- Knowledge -->
+    <fieldset>
+        <legend>Knowledge</legend>
+        <div id="knowledge"> (0=none, 5=experienced)</div>
+        <label for="html" class="range" > HTML5 </label>
+        <input type="range" id="html" min="0" max="5" step="1" value="5" name="html">
+        <output id="showH">5</output><br>
+        <label for="css" class="range" > CSS3 </label>
+        <input type="range" id="css" min="0" max="5" step="1" value="5" name="css">
+        <output id="showC">5</output><br>
+        <label for="js" class="range" > JavaScript </label>
+        <input type="range" id="js" min="0" max="5" step="1" value="5" name="js">
+        <output id="showJ">5</output><br>
+    </fieldset>
+
+    <!-- Some declarations -->
+    <fieldset>
+        <legend>Some declarations...</legend>
+        <input type="checkbox" id="cooperation" name="cooperation" value="cooperation">
+        <label for="cooperation">I need to cooperate with other developers for this task </label><br>
+        <input type="checkbox" id="proTools" name="proTools" value="proTools">
+        <label for="proTools"> I need access to more Pro tools of the Company to do this task (such as Oracle) </label><br>
+    </fieldset>
+
+    <!-- questions -->
+    <fieldset>
+        <legend>*Your questions ...</legend>
+        <textarea name="aboutMe"  id="mytext" 
+        placeholder="ask about the task, (max 500 characters)" 
+        cols="50" rows="10" maxlength="500"></textarea><br>
+        <output id="charsLeft"></output>
+    </fieldset>
+
+    <input type= "submit" onclick="myFunction()"value="Submission"><br>
+</form>
+
+<p><button class="button"onclick="myMove()">Click Me</button></p> 
+<div id ="container">
+    <div id ="animate"></div>
+  </div>
+
+</body>
+<script>
+    /*
+        Good morning/noon/evening  Filothei,
+        I leave this empty and we can add some basic functions, events that we assume that 
+        help the attenders of the event to start writing javascript.
+        We should specify the TODOs with helping comments in order for the attenders to 
+        focus on developing the app...
+    */
+
+// TODO 1:  likes counter   (number goes +1 when we press the button)
+function like() {
+    var counter = document.getElementById("likeCounter");
+    // go to the web page, right click -> Check (or Inspector) -> Console
+    // there you can see what is printed to the console (every time you click on likes button): 
+    console.log('counter = ');
+    console.log(counter);
+
+    // Your code here
+}
+    
+// TODO 2:  validation for the form submission (true-> submission, false->no submission)   
+//          the estimated Deadline should be after the current Date Time
+function validate(){
+    let currentDate = new Date(); // current date
+    dateElement = document.querySelector("#date");
+    date = dateElement.value;
+    let estimatedDeadline = new Date(date);
+    // use the below alerts to understand what dateElement and date are...
+    // Alert is made when you submit the form (so that validate() is called)
+    // alert(dateElement);
+    // alert(date);
+    // alert(estimatedDeadline);
+    
+    // Your code here
+    // use  also the below commands ... as a way to display messages to the web page window
+    // use getTime() method to compare times from Date objects
+
+    // window.alert("Please insert a valid estimated deadline (after the current Date)!");
+    
+    // window.confirm("Thank you for your participation! Coordinator of this team will contact you soon. ");
+    
+    
+    return true;
+}
+
+// TODO 3:  count chars left in "About Me" field (e.g. if you write a word of 5 characters 500-5 = 495 characters are left)
+//          Our first Event will be used here!! (input change...)
+const chars = document.querySelector("#mytext");
+const charsleft = document.querySelector("#charsLeft");
+console.log('chars = ');
+console.log(chars);
+console.log('charsLeft = ');
+console.log(charsLeft);
+chars.addEventListener("input", (e)=>{
+    // Your code here
+})
+
+
+// TODO 4:  dropdown menu for tasks (Navbar, Database Design, Cybersecurity, Contact page, Home page)
+const taskSelect = document.querySelector("#task");
+console.log('taskSelect = ');
+console.log(taskSelect);
+const tasksList = `Navbar
+Home Page
+Contact Page
+Cybersecurity 
+DataBase Design`.split("\n").sort()
+console.log('tasksList = ');
+console.log(tasksList);
+// Your code here
+
+// TODO 5:  dropping line in the field "Knowledge" (HTML, CSS, JS) 
+//          (show the value of the range-input elements from 0 to 5)
+const h = document.querySelector("#html");
+const showH = document.querySelector("#showH");
+// in order to understand... print them to the console
+console.log('h = ');
+console.log(h);
+console.log('showH = ');
+console.log(showH);
+h.addEventListener("input", (ev)=>{
+    // Your code here
+})
+
+
+
+// Bonus Game:  The IEEE logo moves in the diagonal!
+
+
+</script>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IEEE NTUA STUDENT BRANCH</title>
+</head>
+<body>
+    <h1>IEEE Student Branch NTUA</h1>
+<p>IEEE Student Branch in NTUA is a union of undergraduate and postgraduate students. Its purpose is to contribute 
+to the expansion of knowledge related with the field of Electrical and Computer engineering and the developing 
+of technical skills. Taking part in various and interesting projects,students acquire useful and pioneering
+knowledge , obtain experience και develop their creativity. 
+</p>
+<br>
+<h1>Chapters</h1>
+<p> IEEE Student Branch in NTUA includes 5 chapters:</p>
+<!--
+ Φτιάξτε μία unordered list με στοιχεία <a> που παραπέμπουν σε καθένα
+ από τα Chapters του IEEE NTUA Student Branch (Computer Society,RAS, Biomedical,PES,ComSoc)   
+-->
+
+
+
+<!-- Φτιάξτε ένα header για τα events-->
+<div>
+ <p> Workshop for training students about IEEE Extreme competition.</p>   
+ <!--Εισάγετε μία σχετική εικόνα-->    
+ <BR>
+<!--Φτιάξτε ένα button για τα likes-->
+</div>
+
+<h1> Complete the form to be assigned a Task </h1>
+<h3> Developer and friend of IEEE </h3>
+
+
+<form id="myForm" method="get">
+    <output id="message"></output>
+    <fieldset> 
+        <legend>Personal info</legend>
+        <label for="name">*First Name: </label>
+        <input id="name" type="text" autofocus size="30" required
+        name="name" placeholder="e.g. Christofer"><br>
+
+         <!--Φτιάξτε input και label tags για να εισάγει ο χρήστης το επώνυμο και το email του -->
+    
+        
+        <!--Φτιάξτε label και input tags(type='radio') για να επιλέξει ο χρήστης αν θα είναι Junior ή
+        Senior Developer-->
+        
+        <!--Φτιάξτε label και input tags(type='date') για να επιλέξει ο χρήστης το deadline-->
+    </fieldset>
+
+    <fieldset>
+        <legend>Available Tasks</legend>
+        
+        <label for="tasks">*Tasks:</label>
+        <input list="tasks" name="task" required>
+        <datalist id="tasks">
+        <!-- Φτιάξτε τη drop down list για να επιλέξει ο χρήστης σε ποιο task επιθυμεί να 
+        συμμετέχει (π.χ. Ethical Haking, Software Development, Algorithms)
+        Θα χρειαστεί να χρησιμοποιήσετε τα tags select και option-->
+        </datalist>
+    </fieldset>
+
+    <fieldset>
+        <legend>Knowledge</legend>
+        <div id="knowledge"> (0=none, 5=experienced)</div>
+        <label for="html" class="range" > HTML5 </label>
+        <input type="range" id="html" min="0" max="5" step="1" value="5" name="html">
+        <output id="showH">5</output><br>
+        <!--Ομοίως  φτιάξτε input,label,output tags για τη γνώση των γλωσσών CSS3 και Javascript -->
+        
+    </fieldset>
+
+    <!-- Ενδιαφέροντα -->
+    <fieldset>
+        <legend>Some declarations...</legend>
+        <!--Φτιάξτε label και input tags(type=checkbox) για να δηλώσει ο χρήστης αν θέλει να 
+        συνεργαστεί με άλλους developers για το συγκεκριμένο task-->
+       
+
+    </fieldset>
+    <fieldset>
+        <legend>*Your questions ...</legend>
+        <!--Φτιάξτε ένα textarea με το μέγιστο 500 χαρακτήρες-->
+    </fieldset>
+
+    <input type= "submit" value="Submission"><br>
+</form>
+
+<H1>Contact </H1>
+<div id="contact-info">
+    <p> You can contact us about your questions...  &emsp;
+        <!--Φτιάξτε <a> για το email, το facebook και το instagram-->
+            <!--Εισάγετε εικόνες και ρυθμίστε τα attributes width και height-->
+            <!-- Για την εικόνα του mail βάλτε src="https://thumbs.dreamstime.com/b/email-blue-circle-icon-open-envelope-pictogram-mail-symbol-email-messaging-email-marketing-campaign-website-design-178224635.jpg"--> 
+<!--Για την εικόνα του facebook src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Facebook_icon_2013.svg/2048px-Facebook_icon_20000000000000000000000000000000000000000000000000000000000000000000000000000000000000000013.svg.png"
+-->
+<!--Για την εικόνα του instagram src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png"
+-->
+       </div>
+</body>
+</html>

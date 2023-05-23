@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+        Good morning/noon/evening Apostolis, Spiros
+        I leave this empty and you can add some basic css rules that you assume that 
+        help the attenders of the event to start writing code.
+        Please specify the TODOs with helping comments in order for the attenders to 
+        focus on developing the app...
+        */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color:#efefef;
+        }
+
+        /* e.g. TODO 5: specify the margin, padding of labels, inputs, outpus, ...*/
+        label, input, output, #knowledge, legend, select, textarea, #message{    
+            /* 
+            here you can change the values to find what you want
+            and understand css box model
+            */
+            margin: 5em; /*that's too big!!*/
+            padding: 0.2em;
+            font-size: 1em;
+            border-radius: 5px;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>IEEE Student Branch NTUA</h1>
+    <nav>
+        <div class="logo">
+         
+        </div>
+        <div class="icon">
+          <span class="toggle">☰</span>
+        </div>
+        <ul class="list-item">
+          <li><a href="#">Computer Society</a></li>
+          <li><a href="#">Robotics and Automation Society</a></li>
+          <li><a href="#">Engineering in Medicine and Biology</a></li>
+          <li><a href="#">Power and Energy Society</a></li>
+          <li><a href="#">Communication Society</a></li>
+        </ul>
+      </nav>
+<h1>About</h1>
+<p>IEEE Student Branch in NTUA is a union of undergraduate and postgraduate students. Its purpose is to contribute 
+    to the expansion of knowledge related with the field of Electrical and Computer engineering and to the development 
+    of technical skills. Taking part in various and interesting projects,students acquire useful and pioneering
+    knowledge , obtain experience and  develop their creativity.</p>
+
+<h1>Events</h1>
+<div>
+<p>Workshop for training students about IEEE Extreme competition.
+</p>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<!-- <img src="IEEE_Extreme_training.jpg"> -->
+<br>    
+<button class="button" onclick="like()" type="button">
+    Likes  
+   <i class="fas fa-thumbs-up"></i>
+   <span id="likeCounter">0</span> 
+</button>
+</div>
+
+
+<h1> Complete the form to be assigned a Task </h1>
+<h3> Developer and friend of IEEE </h3>
+<!-- contact section -->
+<div id="contact-info">
+    <p> You can contact us about your questions...  &emsp; 
+        <a href = "mailto:ieee.ntua.sb@gmail.com"> <img src="https://thumbs.dreamstime.com/b/email-blue-circle-icon-open-envelope-pictogram-mail-symbol-email-messaging-email-marketing-campaign-website-design-178224635.jpg" id="circle-icon"></img> </a> 
+      &emsp; <a href="https://www.facebook.com/IeeeNtuaSB/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Facebook_icon_2013.svg/2048px-Facebook_icon_2013.svg.png" id="icon"></img> </a> 
+     &emsp; <a href="https://www.instagram.com/ieee_ntua_sb/">  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png" id="icon"></img> </a> 
+     &emsp; </p>
+       </div>
+<form id="myForm" method="get" onsubmit="return(validate());">
+    <output id="message"></output>
+    <!-- Personal info -->
+    <fieldset> 
+        <legend>Personal info</legend>
+        <label for="name">*First Name: </label>
+        <input id="name" type="text" autofocus size="30" required
+        name="name" placeholder="e.g. Christopher"><br>
+        <label for="surname">*Last Name: </label>
+        <input id="surname" type="text" name="surname" required
+        placeholder="e.g. Vardakis" size="30"><br>
+        <label for="email">*Email: </label>
+        <input id="email" type="email" name="email" required><br>
+        <input type="radio" id="junior" value="junior" name="devType" >
+        <label for="junior">Junior Developer  </label>
+        <input type="radio" id="senior" value="senior" name="devType">
+        <label for="senior">Senior Developer </label><br>
+        
+    </fieldset>
+
+    <!-- Available Tasks -->
+    <fieldset>
+        <legend>Available Tasks</legend>
+        <label for="date">*Estimated deadline:</label>
+        <input type="date" id="date" name="date"><br>
+        <label for="tasks">*Tasks:</label>
+        <input list="tasks" name="task" required>
+        <datalist id="tasks">
+        <select name="task" id="task">
+            <!-- here will be positioned options that are made by JavaScript -->
+        </select>
+        </datalist>
+    </fieldset>
+
+    <!-- Knowledge -->
+    <fieldset>
+        <legend>Knowledge</legend>
+        <div id="knowledge"> (0=none, 5=experienced)</div>
+        <label for="html" class="range" > HTML5 </label>
+        <input type="range" id="html" min="0" max="5" step="1" value="5" name="html">
+        <output id="showH">5</output><br>
+        <label for="css" class="range" > CSS3 </label>
+        <input type="range" id="css" min="0" max="5" step="1" value="5" name="css">
+        <output id="showC">5</output><br>
+        <label for="js" class="range" > JavaScript </label>
+        <input type="range" id="js" min="0" max="5" step="1" value="5" name="js">
+        <output id="showJ">5</output><br>
+    </fieldset>
+
+    <!-- Some declarations -->
+    <fieldset>
+        <legend>Some declarations...</legend>
+        <input type="checkbox" id="cooperation" name="cooperation" value="cooperation">
+        <label for="cooperation">I need to cooperate with other developers for this task </label><br>
+        <input type="checkbox" id="proTools" name="proTools" value="proTools">
+        <label for="proTools"> I need access to more Pro tools of the Company to do this task (such as Oracle) </label><br>
+    </fieldset>
+
+    <!-- questions -->
+    <fieldset>
+        <legend>*Your questions ...</legend>
+        <textarea name="aboutMe"  id="mytext" 
+        placeholder="ask about the task, (max 500 characters)" 
+        cols="50" rows="10" maxlength="500"></textarea><br>
+        <output id="charsLeft"></output>
+    </fieldset>
+
+    <input type= "submit" onclick="myFunction()"value="Submission"><br>
+</form>
+
+<p><button class="button"onclick="myMove()">Click Me</button></p> 
+<div id ="container">
+    <div id ="animate"></div>
+  </div>
+
+</body>
+<script>
+    // Wait for JS workshop
+</script>
+</body>
+</html>
