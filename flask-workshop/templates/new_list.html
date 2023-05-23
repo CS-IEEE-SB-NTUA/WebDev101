@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block title %}
+New List
+{% endblock title %}
+
+{% block content %}
+<h3>New List</h3>
+
+<div class="container-fluid">
+    <div class="row" id="row">
+        <div class="col-md-12">
+            <form class="form-horizontal" name="program-form" method="POST">
+                <!-- hidden_tag returns the form's security metadata -->
+                {{ form.hidden_tag() }}
+                <input type="hidden" name="project_id" value="{{project_id}}">
+
+                <div class="form-group col-sm-3 mb-3">
+
+
+                    <!-- We will write the first field of the form here  -->
+
+
+                </div>
+                <div class="form-group col-sm-3 mb-3">
+
+
+                    <!-- We will write the second field of the form here  -->
+
+
+                </div>
+                <div class="form-group col-sm-3 mb-3">
+                    {{ form.due_by_date.label(class = "form-label") }}
+                    {{ form.due_by_date(class = "form-control", placeholder="Due By Date", required = False) }}
+                    {% if form.due_by_date.errors %}
+                    <ul class="errors">
+                        {% for error in form.due_by_date.errors %}
+                        <li class="text-danger">{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+                {{ form.submit(class = "btn btn-secondary btn-submit-custom") }}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

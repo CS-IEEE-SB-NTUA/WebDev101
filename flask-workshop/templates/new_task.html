@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+New Task
+{% endblock title %}
+
+{% block content %}
+<h3>New To-do</h3>
+<form action="{{url_for('add_task', list_id=list.id)}}" method="POST">
+  <label for="title">Title:</label>
+  <input type="text" name="title" id="title" required>
+  <br>
+  <label for="description">Description:</label>
+  <textarea name="description" id="description"></textarea>
+  <br>
+  <label for="time">Due by Date: </label>
+  <input name="time" type="date" id="time">
+  <br>
+  <button class="btn btn-secondary" type="submit">Add to-do</button>
+</form>
+
+{% endblock content %}
