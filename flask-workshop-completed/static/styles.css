@@ -1,0 +1,48 @@
+.title {
+    text-align: center;
+  }
+  
+  .lists {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .list {
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .list:hover {
+    background-color: #e6e6e6;
+  }
+  
+  a {
+    color: #333;
+    text-decoration: none;
+    margin-left: 10px;
+  }
+  
+  a:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+  
+  .delete-btn {
+    background-color: transparent;
+    border: none;
+    color: #ccc;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .delete-btn:hover {
+    color: red;
+  }
+  

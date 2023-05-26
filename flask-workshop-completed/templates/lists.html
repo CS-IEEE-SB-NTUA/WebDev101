@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+  {% block title %}
+    To-do List
+  {% endblock title %}
+
+  {% block content %}
+  <ul class="lists">
+    {% for list in lists %}
+    <li class="list">
+      <!-- <a class="col" href="{{url_for('print_list', list_title = list.title)}}"> -->
+      <a href="{{ url_for('print_list', list_title=list.title) }}">{{ list.title }}</a> <!-- Anchor -->
+
+      <a href="{{ url_for('edit_list_form', list_id=list.id) }}">(edit)</a>
+
+      <form action="{{ url_for('delete_list', list_id=list.id) }}" method="POST" class="pt-3">
+        <input type="hidden" name="_method" value="DELETE">
+        <button class="delete-btn" onclick="delete_list(list.id)">X</button>
+      </form>
+
+      {{list.due_by.strftime("%d/%m/%Y")}}
+
+      <form action="{{ url_for('update_list', list_id=list.id) }}" method="POST" style="display: inline">
+<!--         <input type="hidden" name="_method" value="PUT"> -->
+        <input type="checkbox" name="completed" id="completed" onclick="this.form.submit()" {% if list.completed %}checked{% endif %}>
+      </form>
+    </li>
+
+    {% endfor %}
+  </ul>
+  <a href="/lists/new" class="btn btn-secondary">Add a new list</a>
+  {% endblock content %}
